@@ -116,10 +116,77 @@ Released under the MIT license: http://jsbin.mit-license.org
       </dd>
       <dt>照片</dt>
       <label><input type="file" name="">上传照片</label>
-    <dt>自我介绍</dt>
-      <dd><textarea name="" id="" cols="30" rows="10"></textarea></dd>
+    <dt>照片</dt>
+      <dd>
+        <input hidden type="file" name="avatar" id="avatar-upload">
+        <label for="avatar-upload">点我上传照片，我比文件上传按钮好看</label>
+      </dd>
+
+      <dt>自我介绍</dt>
+      <dd>
+        <textarea name="intro" cols="30" rows="10">&lt;/textarea></textarea>
+      </dd>
     </dl>
+
+    <fieldset disabled>
+      <legend>这里全部禁用了</legend>
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+    </fieldset>
+
+    <button>提交</button>
+    <button type="reset">重置</button>
   </form>
+
+  <hr>
+
+  <table border=1>
+    <col>
+    <col bgcolor=red>
+      <tr>
+        <th>编号</th>
+        <th>品名</th>
+        <th>进价</th>
+        <th>出价</th>
+      </tr>
+         <tr>
+        <th>aaa</th>
+        <td>a</td>
+        <td rowspan="2">a</td>
+        <td>a</td>
+      </tr>
+      <tr>
+        <th>a</th>
+        <td>a</td>
+        <td>a</td>
+      </tr>
+      <tr>
+        <th>a</th>
+        <td>a</td>
+        <td>a</td>
+        <td>a</td>
+      </tr>
+      <tr>
+        <th>a</th>
+        <td>a</td>
+        <td>a</td>
+        <td>a</td>
+      </tr>
+  </table>
+  <hr>
+  <hr>
+
+  <a target="bottom-frame" href="https://www.mi.com/">小米</a>
+  <div></div>
+  <iframe name="bottom-frame" src="https://www.nodejs.org/" frameborder="1"></iframe>
+
+  <div>aaa&nbsp;&nbsp;&nbsp;&nbsp;bbbbb</div>
+
+  <pre>aaa      bbbbb</pre>
+
+  >>>>>>>>>>>>>>>>>>>>>>&lt;<<<<<<<<<<<<<<<<<< &lt;span&gt;&lt;/span&gt;
   <div id="bottom"></div>
 </body>
 </html>
