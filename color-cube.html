@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  x*{
+  background-color: rgba(0,0,0,0.08);
+  box-shadow:inset 0 0 1px red;
+}
+@keyframes autorotate{
+  0%{
+    transform:rotate3d(1,1,1,0deg);
+  }
+  50%{
+    transform:rotate3d(1,0,1,180deg);
+  }
+  100%{
+    transform:rotate3d(1,0,0,270deg);
+  }
+}
+section{
+  position:relative;
+  width: 300px;
+  height: 300px;
+  animation:autorotate 5s linear infinite;
+  transform-style:preserve-3d;
+}
+div{
+  inset: 0 0 0 0;
+  margin:auto;
+  height: 200px;
+  width: 200px;
+  position:absolute;
+  transform-style:preserve-3d;
+  box-sizing:border-box;
+  border:2px solid;
+  transition:1s;
+  &.front{
+    background-color: red;
+    transform:translatez(100px);
+  }
+  &.behind{
+    background-color: green;
+    transform:translatez(-100px);
+  }
+  &.top{
+    background-color: yellow;
+    transform:translatez(0px) translatey(-100px) rotatex(90deg);
+  }
+  &.right{
+    background-color: blue;
+    transform:translatex(100px) translatez(0px) rotatey(90deg);
+  }
+  &.left{
+    background-color: pink;
+    transform:translatex(-100px) translatez(0px) rotatey(90deg);
+  }
+  &.bottom{
+    background-color: orange;
+    transform:translatey(100px) translatez(0px) rotatex(90deg);
+  }
+}
+
+</style>
+<body>
+  <section>
+    <div class="front"></div>
+    <div class="top"></div>
+    <div class="right"></div>
+    <div class="left"></div>
+    <div class="bottom"></div>
+    <div class="behind"></div>
+    
+      </section>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    x*{
+  background-color: rgba(0,0,0,0.08);
+  box-shadow:inset 0 0 1px red;
+}
+@keyframes leave{
+  from {
+    left:0;
+  }
+  to {
+    left:-100%;
+  }
+}
+div.imgs{
+  position:relative;
+  width:450px;
+  height:250px;
+  overflow:hidden;
+}
+input{
+  display: none;
+}
+img{
+  position:absolute;
+  width: 450px;
+  height:250px;
+  left:100%;
+  transition:.6s;
+  animation:leave .6s ;
+}
+input:nth-child(1):checked ~ div 
+img:nth-child(1),input:nth-child(2):checked ~ div 
+img:nth-child(2),input:nth-child(3):checked ~ div 
+img:nth-child(3),input:nth-child(4):checked ~ div 
+img:nth-child(4){
+  left:0;
+  animation:none;
+  z-index:2;
+}
+input:nth-child(1):checked ~ div 
+label:nth-child(1),input:nth-child(2):checked ~ div 
+label:nth-child(2),input:nth-child(3):checked ~ div 
+label:nth-child(3),input:nth-child(4):checked ~ div 
+label:nth-child(4){
+  background-color: blue;
+}
+div.indicators {
+    position:relative;
+    left:390px;
+    bottom: 20px;
+    z-index: 999;
+    label {
+      cursor: pointer;
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      background-color: white;
+      border: 1px solid;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="radio" name = "select" id="in1" checked>
+    <input type="radio" name = "select" id="in2">
+    <input type="radio" name = "select" id="in3">
+    <input type="radio" name = "select" id="in4">
+      <div class = "imgs">
+        <img src="https://upload-bbs.miyoushe.com/upload/2024/06/08/301537628/d4c31bd0260dac01a76f46ec17883b02_2086495219548920220.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png" alt="">
+        <img src="https://upload-bbs.miyoushe.com/upload/2024/06/08/301537628/1951aeee0d6ad71f5f50f78311e7be19_2151699489444472440.jpg?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg" alt="">
+        <img src="https://upload-bbs.miyoushe.com/upload/2024/06/08/301537628/ea49811a8bad60fa8bc5dbd90d645ee3_7604628207208284499.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png" alt="">
+        <img src="https://upload-bbs.miyoushe.com/upload/2024/06/08/301537628/126a619f6a8631e12a0ffd7f1ccded40_1294954980981811869.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png" alt="">
+      </div>
+      <div class = "indicators">
+      <label for="in1" ></label>
+      <label for="in2" ></label>
+      <label for="in3" ></label>
+      <label for="in4" ></label>
+      </div>
+     </div>
+</body>
+</html>
