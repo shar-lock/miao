@@ -110,3 +110,244 @@
   let N = +prompt('N: ')
   console.log(2 ** N)
 </script>
+
+<script  id="ch0104/01">
+  let N = +prompt('输入一个整数')
+  if(N > 0){
+    console.log('positive')
+  }else if(N == 0){
+    console.log('zero')
+  }else{
+    console.log('negative')
+  }
+</script>
+<script  id="ch0104/02">
+  let n = +prompt('输入一个数')
+  if(n>= 0){
+    console.log(n)
+  }else{
+    console.log(-n)
+  }
+</script>
+<script  id="ch0104/03">
+  let n = +prompt('输入一个大于0的正整数')
+  if(n%2 == 1){
+    console.log('odd')
+  }else{
+    console.log('even')
+  }
+</script>
+<script id="ch0104/04">
+  let letter = prompt('输入一个字母')
+  let num = letter.charCodeAt()
+  if(num%2 == 1){
+    console.log('YES')
+  }else{
+    console.log('NO')
+  }
+</script>
+<script id="ch0104/05">
+  let n1 = +prompt('x = ?')
+  let n2 = +prompt('y = ?')
+  if(n1>n2){
+    console.log('>')
+  }else if(x == y){
+    console.log('=')
+  }else{
+    console.log('<')
+  }
+</script>
+<script id="ch0104/06">
+  let n6 = +prompt('输入一个正整数')
+  if(n6>=10&&n6<=99){
+    console.log(1)
+  }else{
+    console.log(0)
+  }
+</script>
+<script id="ch0104/07">
+  let luck = +prompt('幸运奖')
+  let encourage = +prompt('鼓励奖')
+  if(luck>=10||encourage>=20){
+    console.log(1)
+  }
+  else{
+    console.log(0)
+  }
+</script>
+<script id="ch0104/08">
+  let num8 = +prompt('输入一个整数')
+  if(num8%5==0&&num8%3==0){
+    console.log('YES')
+  }else{
+    console.log('NO')
+  }
+</script>
+<script id="ch0104/09">
+  let num9 = +prompt('输入一个整数')
+  const arr = [3,5,7]
+  const arrResult = []
+  for(let i=0;i<arr.length;i++){
+    if(num9%arr[i]==0){
+      arrResult.push(arr[i])
+    }
+  }
+  if(arrResult.length == 0){
+    console.log('n')
+  }else{
+    let result = ''
+    for(let i=0;i<arrResult.length;i++){
+      result += arrResult[i]
+      if(i !=arrResult.length - 1 ){
+        result += ' '
+      }
+    }
+    console.log(result)
+  }
+</script>
+<script id="ch0104/10">
+  let n10 = +prompt('输入语文成绩')
+  let y10 = +prompt('输入数学成绩')
+  if(n10<60&&y10>60||y10<60&&n10>60){
+    console.log(1)
+  }else{
+    console.log(0)
+  }
+</script>
+<script id="ch0104/11">
+  let date = +prompt('输入日期')
+  if(data==1||data==3||data==5){
+    console.log('NO')
+  }else{
+    console.log('YES')
+  }
+</script>
+<script  id="ch0104/12">
+  let distance = +prompt('输入距离')
+  let Bike = distance / 3 + 50
+  let Walk = distance / 1.2
+  if(Bike>Walk){
+    console.log('Walk')
+  }else if(Bike<Walk){
+    console.log('Bike')
+  }else{
+    console.log('All')
+  }
+</script>
+<script id="ch0104/13">
+  let x = +prompt('x = ?')
+  if(x>=0&&x<5){
+    console.log((-x + 2.5).toFixed(3))
+  }else if(x>=5&&x<10){
+    console.log((2 - 1.5*(x-3)*(x-3)).toFixed(3))
+  }else{
+    console.log((x/2 - 1.5).toFixed(3))
+  }
+</script>
+<script id="ch0104/14">
+  let num12 = +prompt('输入一个整数')
+  let letter12 = prompt('输入一个字符')
+  let cost = 0
+  if(num12<=1000){
+    cost = num12 * 0.008
+  }else if(num12 > 1000){
+    let overWeight = Math.ceil((num12 - 1000)/500)
+    cost = 4 * overWeight + 8
+  } 
+  if(letter12 == 'y'){
+    console.log(cost + 5)
+  }else{
+    console.log(cost)
+  }
+</script>
+<script  id="ch0104/15">
+  let num1 = +prompt('输入三个整数')
+  let num2 = +prompt('')
+  let num3 = +prompt('')
+  if(num1>num2){
+    if(num1>num3){
+      console.log(num1)
+    }else{
+      console.log(num3)
+    }
+  }else{
+    if(num2>num3){
+      console.log(num2)
+    }else{
+      console.log(num3)
+    }
+  }
+</script>
+<script id="ch0104/16">
+  let num1 = +prompt('输入三个整数')
+  let num2 = +prompt('')
+  let num3 = +prompt('')
+  if(num1 + num2 > num3 && num2 + num3 > num1 && num1 + num3 > num2){
+    console.log('yes')
+  }else{
+    console.log('no')
+  }
+</script>
+<script id="ch0104/17">
+ let year = +prompt('输入年份')
+ if(year%400==0){
+  console.log('Y')
+ }else if(year%100==0){
+  console.log('N')
+ }else if(year%4==0){
+  console.log('Y')
+ }else{
+  console.log('N')
+ }
+</script>
+<script id="ch0104/18">
+  let x = +prompt('x = ?')
+  let y = +prompt('y = ?')
+  if(x>=-1&&x<=1&&y>=-1&&y<=1){
+    console.log('yes')
+  }else{
+    console.log('no')
+  }
+</script>
+<script id="ch0104/19">
+  let num1 = +prompt('第一个数')
+  let num2 = +prompt('第二个数')
+  let sign = prompt('计算符')
+  if(sign == '+'){
+    console.log(num1 + num2)
+  }else if(sign == '-'){
+    console.log(num1 - num2)
+  }else if(sign == '*'){
+    console.log(num1 * num2)
+  }else if(sign == '/'){
+    console.log(num1 / num2)
+  }else{
+    console.log('Invalid operator')
+  }
+</script>
+<script id="ch0104/20">
+  let a = +prompt('a = ?')
+  let b = +prompt('b = ?')
+  let c = +prompt('c = ?')
+  let diata = b*b - 4 * a * c
+  if(diata == 0){
+    let result = (-b / (2*a)).toFixed(5)
+    console.log('x1=x2='+ result)
+  }else if(diata > 0){
+    let result1 = ((-b + Math.sqrt(diata)) / (2*a)).toFixed(5)
+    let result2 = ((-b - Math.sqrt(diata)) / (2*a)).toFixed(5)
+    console.log('x1='+ result1+';x2='+result2)
+  }else{
+    diata = Math.sqrt(Math.abs(diata))
+    let real = (-b / (2 * a)).toFixed(5)
+    let virtual = (diata / (2 * a)).toFixed(5)
+    console.log('x1=' + real + '+' + virtual + 'i;x2=' + real + '-' + virtual + 'i')
+  }
+</script>
+<script id="ch0104/21">
+  let n = +prompt('n = ?')
+  let x = +prompt('x = ?')
+  let y = +prompt('y = ?')
+  let eaten = Math.ceil(y/x)
+  console.log(n - eaten)
+</script>
