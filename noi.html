@@ -216,7 +216,7 @@
 </script>
 <script id="ch0104/11">
   let date = +prompt('输入日期')
-  if(data==1||data==3||data==5){
+  if(date==1||date==3||date==5){
     console.log('NO')
   }else{
     console.log('YES')
@@ -320,7 +320,11 @@
   }else if(sign == '*'){
     console.log(num1 * num2)
   }else if(sign == '/'){
+    if(num2 == 0){
+      console.log('Divided by zero!')
+    }else{
     console.log(num1 / num2)
+    }
   }else{
     console.log('Invalid operator')
   }
