@@ -3,13 +3,13 @@
   let B = +prompt('B: ')
   console.log(A + B)
 </script>
-<script type = "xxx" id="ch0103/02">
+<script  id="ch0103/02">
   let a = +prompt('a: ')
   let b = +prompt('b: ')
   let c = +prompt('c: ')
   console.log((a+b)*c)
 </script>
-<script type = 'xxx' id="ch0103/03">
+<script  id="ch0103/03">
   let a = +prompt('a: ')
   let b = +prompt('b: ')
   let c = +prompt('c: ')
@@ -354,4 +354,662 @@
   let y = +prompt('y = ?')
   let eaten = Math.ceil(y/x)
   console.log(n - eaten)
+</script>
+
+<script type="x" id="ch0105/01">
+  let num01 = +prompt('学生个数')
+  let i = 0
+  let sum1 = 0
+  while(i < num01){
+    let ages = +prompt('输入年龄')
+    sum1 += ages
+    i++
+  }
+  console.log((sum1 / num01).toFixed(2))
+</script>
+<script type="x" id="ch0105/02">
+  let i = 0
+  let sum = 0
+  while(i<12){
+  let n = +prompt('')
+  sum += n
+  }
+  console.log('$' + (sum / 12).toFixed(2))
+</script>
+<script type="x" id="ch0105/03">
+  let n = +prompt('')
+  let i = 0
+  let sum = 0
+  while(i < n){
+  let n = +prompt('')
+  sum += n
+  i++
+  }
+  console.log((sum / n).toFixed(4))
+</script>
+<script type="x" id="ch0105/04">
+  let n = +prompt('')
+  let i = 0
+  let sum = 0
+  while(i < n){
+  let mem = +prompt('')
+  sum += n
+  i++
+  }
+  console.log(sum,(sum / n).toFixed(5))
+</script>
+<script type="x" id="ch0105/05">
+  let n = +prompt('输入数')
+  let i = 0
+  let max = +prompt('')
+  while(i < n - 1){
+  let mem = +prompt('')
+  if(mem>max){
+    max = mem
+   }
+   i++
+  }
+ console.log(max)
+
+</script>
+<script type="x" id="ch0105/06">
+  let n = +prompt('输入数')
+  let i = 0
+  let max = +prompt('')
+  let min = max
+  while(i < n - 1){
+   let mem = +prompt('')
+    if(mem>max) max = mem
+    if(mem<min) min = mem
+    i++
+  }
+  console.log(max - min)
+</script>
+<script type="x" id="ch0105/07">
+  let n = +prompt('输入数')
+  let i = 0
+  let gold = 0
+  let sliver = 0
+  let Cu = 0
+  while(i < n ){
+   let Gold = +prompt('')
+   let Sliver = +prompt('')
+   let cu = +prompt('')
+   gold += Gold
+   sliver += Sliver
+   Cu += cu
+   i++
+  }
+  console.log(gold,sliver,Cu,gold + sliver + Cu)
+</script>
+<script type="x" id="ch0105/08">
+  let n = +prompt('输入数')
+  let sum = (n-2)*180
+  let i = 0
+  while(i < n - 1 ){
+  let mem = +prompt('')
+  sum -= mem
+  i++
+}
+  console.log(sum)
+</script>
+<script type="x" id="ch0105/09">
+  let n = +prompt('输入起点')
+  let i = +prompt('输入终点')
+  let sum = 0
+  while(n <= i){
+  if(n%2==1) sum += n
+  n++
+  }
+  console.log(sum);
+</script>
+<script type="x" id="ch0105/10">
+  let n = +prompt('')
+  let i = +prompt('')
+  let sum = 0
+  while(n <= i){
+  if(n%17==0)sum += n
+  n++
+  }
+  console.log(sum)
+</script>
+<script type="x" id="ch0105/11">
+  let n = +prompt('输入数')
+  let i = 0
+  let num1 = 0
+  let num5 = 0
+  let num10 = 0
+  while(i<n){
+  let mem = +prompt('')
+  if(mem == 1) num1++
+  if(mem == 5) num5++
+  if(mem == 10) num10++
+  i++
+  }
+  console.log(num1)
+  console.log(num5)
+  console.log(num10)
+</script>
+<script type="x" id="ch0105/12">
+  let n = +prompt('输入数')
+  let m = +prompt('')
+  let i = 0
+  let num = 0
+  while(i<n){
+  let mem = +prompt('')
+  if(mem == m) num++
+  i++
+  }
+  console.log(num)
+</script>
+<script type="x" id="ch0105/13">
+  let n = +prompt('输入数')
+  let m = +prompt('')
+  let i = 0
+  let sum = 1
+  while(i<m){
+  sum *= n 
+  i++
+  }
+  console.log(sum)
+</script>
+<script type="x" id="ch0105/14">
+  let n = +prompt('输入数')
+  let y = +prompt('年数')
+  let i = 0
+  let sum = n
+  while(i<y){
+  sum = sum * 1.001
+  i++
+  }
+  console.log(sum.toFixed(4))
+
+</script>
+<script type="x" id="ch0105/15">
+  let R = +prompt('R')
+  let M = +prompt('M')
+  let Y = +prompt('Y')
+  let i = 0
+  while(i<Y){
+  M *= (R * 0.01 + 1)
+  i++
+  }
+  console.log(parseInt(M))
+
+</script>
+<script type="x" id="ch0105/16">
+  let n = +prompt('输入年薪')
+  let k = +prompt('输入增长') 
+  let i = 1
+  let sum = 200
+  let salary = n
+  while(i<=20){
+    if(i!=1){
+    sum *= ( k*0.01 + 1)
+    salary += n 
+    }
+    if(salary>=sum) {
+      console.log(i)
+      break
+    }
+    i++
+    if(i==21){
+      console.log('Impossible')
+    }
+  }
+</script>
+<script type="x" id="ch0105/17">
+  let n = +prompt('输入数')
+  let num1 = 1
+  let num2 = 1
+  let i = 0
+  let temp = 0
+  if(n>2){
+   while(i<n - 2){
+   sum = num1 + num2
+   temp = num2
+   num2 = sum
+   num1 = temp
+   i++
+  }
+  console.log(sum)
+} else {
+  console.log(1)
+}
+</script>
+<script type="x" id="ch0105/18">
+  let n = +prompt('')
+  let i = 0
+  let sum = 0
+  let jiWei1 = +prompt('')
+  let jiWei2 = +prompt('')
+  let rate = jiWei2 / jiWei1 * 100
+  while(i < n-1){
+  let mem1 = +prompt('')
+  let mem2 = +prompt('')
+  let rate2 = mem2/mem1 * 100
+  if(rate2 - rate > 5) console.log('better')
+  else if(rate - rate2 > 5) console.log('worse')
+  else console.log('same')
+  i++
+  }
+</script>
+<script type="x" id="ch0105/19">
+  let n = +prompt('输入数')
+  let i = 0
+  while(i<n){
+  let x = +prompt('x')
+  let y = +prompt('y')
+  let num = +prompt('num')
+  let sum  = num * 1.5
+  let d = Math.sqrt(x**2 + y**2)
+  sum += d/50 * 2
+  console.log(Math.ceil(sum))
+  i++
+  }
+</script>
+<script type="x" id="ch0105/20">
+  let n = +prompt('输入数')
+  let i = 0
+  let sum = n
+  while(i<9){
+  n = n/2
+  sum += 2*n
+  i++
+  }
+  console.log(sum.toFixed(4))
+  console.log((n/2).toFixed(7))
+
+</script>
+<script type="x" id="ch0105/21">
+  let n = +prompt('输入数')
+  while(n!=1){
+  if(n%2==1){
+    console.log(n + '*3+1=' + (n*3 +1))
+    n = n*3 +1
+  }else{
+    console.log(n+'/2='+n/2)
+    n =  n / 2
+  }
+}
+  console.log('End')
+</script>
+<script type="x" id="ch0105/22">
+  let i = 1
+  let money = 0
+  let save = 0
+  while(i<=12){
+  money += 300
+  let cost = +prompt('')
+  if(cost>money) {
+    console.log('-'+i) 
+    break
+  }
+  else{
+    money -= cost
+    if(money>=100){
+      let saveThisMonth = parseInt(money/100) *100
+      money -= saveThisMonth
+      save += saveThisMonth
+    }
+  }
+  i++
+  if(i>12) console.log(money + save * 1.2)
+}
+  
+</script>
+<script type="x" id="ch0105/23">
+  let n = +prompt('输入数')
+  let num = +prompt('取药人数')
+  let i = 1
+  let sum = 0
+  while(i<=num){
+  let take = +prompt('')
+  i++
+  if(take>n){
+    continue
+  }
+  n -= take
+  sum++
+ }
+ console.log(num - sum)
+</script>
+<script type="x" id="ch0105/24">
+let n = +prompt('')
+let i= 0
+let sum = 0
+let max =0
+while(i<n){
+let num1 = +prompt('收缩压')
+let num2 = +prompt('舒张压')
+if(num1>=90&&num1<=140&&num2>=60&&num2<=90) {sum++}
+else {sum = 0}
+if(sum>max) max = sum
+i++
+}
+console.log(max)
+</script>
+<script type="x" id="ch0105/25">
+let i = 81
+let arr9 = []
+let arr7 = []
+while(i<=342){
+let test1 = i
+let test2 = i
+while(test1){
+arr7.push(test1%7)
+test1 = (test1 - test1%7)/7
+}
+while(test2){
+arr9.push(test2%9)
+test2 = (test2 - test2%9)/9
+}
+if(arr7[0]==arr9[2]&&arr9[0]==arr7[2]){
+console.log(i)
+console.log(''+arr7[2]+arr7[1]+arr7[0])
+console.log(''+arr9[2]+arr9[1]+arr9[0])
+}
+arr7 = []
+arr9 = []
+i++
+}
+</script>
+<script type="x" id="ch0105/26">
+let n = +prompt('')
+let i= 0
+let sum = 0
+while(i<n){
+let m = prompt('')
+if(m[3]-m[0]-m[1]-m[2]>0) sum++
+i++
+}
+console.log(sum)
+
+</script>
+<script type="x" id="ch0105/27">
+let k = +prompt('k = ?')
+let i=1
+let sum = 0
+while(true){
+sum += 1/i
+if(sum > k) break
+i++
+}
+console.log(i)
+
+</script>
+<script type="x" id="ch0105/28">
+let k = +prompt('k =?')
+let str =''
+while(k){
+str += k%10 + ' '
+k= (k- k%10)/ 10
+}
+console.log(str.slice(0, str.length - 1))
+
+</script>
+<script type="x" id="ch0105/29">
+let k = +prompt('k =?')
+let str = ''
+let flag = false
+if(k<0){
+flag = true
+k=-k
+}
+while(k){
+str += k%10
+k=(k-k%10)/10
+}
+if(flag){
+console.log(-(+str))
+}else{
+console.log(+str)}
+
+</script>
+<script type="x" id="ch0105/30">
+let k = +prompt('k = ?')
+let m = +prompt('')
+let n = k
+let sum = 0
+while(k){
+if(k%10 == m) sum++
+k=(k-k%10)/10
+}
+if(n%19==0&&sum==3){
+console.log('YES')
+}else{
+console.log('NO')}
+
+</script>
+<script type="x" id="ch0105/31">
+let n = +prompt('')
+let m = +prompt('')
+let arr =[]
+for(let k = 0;k<n;k++) arr.push(true)
+let i=1
+while(i<=m){
+for(let j=0;j<n;j++){
+if((j+1)%i==0) arr[j]= !arr[j]
+}
+i++
+}
+let str = ''
+for(let i=0;i<n;i++){
+if(!arr[i]) str +=i+1 +','
+}
+console.log(str.slice(0,str.length- 1))
+
+</script>
+<script type="x" id="ch0105/32">
+let n = +prompt('')
+let i= 0
+let sum = 0
+let p=1
+let q=2
+let temp =0
+while(i<n){
+sum += q/p
+temp= p
+p = q
+q = q + temp
+i++
+}
+console.log(sum.toFixed(4))
+
+</script>
+<script type="x" id="ch0105/33">
+let n = +prompt('')
+let sum = 0
+let sign = -1
+for(let i=1;i<=n;i++){
+if(i%2==0){
+sum += sign*(1/i)
+ }else{
+sum += 1/i
+  }
+ }
+console.log(sum.toFixed(4))
+
+</script>
+<script type="x" id="ch0105/34">
+let n = +prompt('')
+let sum = 0
+function fact(n){
+if(n==1) return 1
+else return n*fact(n-1)
+}
+for(let i = 1;i<=n;i++){
+sum += fact(i)
+}
+console.log(sum)
+
+</script>
+<script type="x" id="ch0105/35">
+let n = +prompt('')
+let sum =1
+function fact(n){
+if(n==1) return 1
+else return n*fact(n-1)
+}
+for(let i = 1;i<=n;i++){
+sum +=1/fact(i)
+}
+console.log(sum.toFixed(10))
+
+</script>
+<script type="x" id="ch0105/36">
+let x = +prompt('')
+let n = +prompt('')
+let sum = 0
+for(let i=n;i>=0;i--){
+sum += x**i
+}
+console.log(sum.toFixed(2))
+
+</script>
+<script type="x" id="ch0105/37">
+  let M = +prompt('M = ')
+  let N = +prompt('N = ')
+  let X = +prompt('X = ')
+  let max = M
+  while(true){
+    if(M - N <0) {
+      if(X - (max - M) < 0) break
+      else X = X - (max - M)
+      M = max
+    }
+    M -= N
+    N++
+  }
+  console.log(N)
+</script>
+<script type="x" id="ch0105/38">
+  let n = +prompt('循环次数')
+  let sum = ''
+  for(let i = 0;i<n;i++){
+    let m = +prompt('最高次项')
+    for(let j = m;j>=0;j--){
+      let C = +prompt('多项式系数')
+      if(j==0) sum += ''
+      else sum += j * C +' '
+    }
+    if(m == 0) console.log('0')
+    else console.log(sum.slice(0,sum.length - 1))
+    sum = ''
+  }
+  
+</script>
+<script type="x" id="ch0105/39">
+  let n = +prompt('')
+  let sum = 0
+  let flag = false
+  for(let i = 1;i<=n;i++){
+    if(i%7==0) flag = true
+    else if(i%10==7||parseInt(i/10)==7) flag = true
+    if(!flag) sum += i*i
+    flag = false
+  }
+  console.log(sum)
+</script>
+<script type="x" id="ch0105/40">
+ let n = +prompt('')
+ let sum = 0
+ for(let i = 1;i<=n;i++){
+  let m = i
+  while(m){
+    if(m%10==1) sum++
+    m = (m - m%10) /10
+  }
+ }
+ console.log(sum)
+</script>
+<script type="x" id="ch0105/41">
+ let L = +prompt('L = ')
+ let R = +prompt('R = ')
+ let sum = 0
+ for(let i = L;i<=R;i++){
+  let m = i
+  while(m){
+    if(m%10==2) sum++
+    m = (m - m%10) /10
+  }
+ }
+ console.log(sum)
+</script>
+<script type="x" id="ch0105/42">
+ let H = +prompt('H = ')
+ let W = +prompt('W = ')
+ let char = prompt('图像')
+ let R = +prompt('1、实心 0、空心')
+ let image = ''
+ if(R==1){
+  for(let i = 0;i<H;i++){
+    for(let j = 0;j<W;j++){
+    image += char
+    }
+    console.log(image)
+    image = ''
+  }
+}else{
+  for(let i = 0;i<H;i++){
+    for(let j = 0;j<W;j++){
+    if(i==0||i==H - 1)
+    {image += char
+    }else{
+      if(j==0||j==W - 1){
+        image += char
+      }
+      else image += ' '
+    }
+  }
+    console.log(image)
+    image = ''
+  }
+ }
+</script>
+<script type="x" id="ch0105/43">
+  let n = +prompt('n = ')
+  let p = 0
+  let max = 0
+  for(let i = parseInt(Math.sqrt(n));i<n;i++){
+    if(n%i==0&&i%2!=0&&i%3!=0&i%5!=0&&i%7!=0||n%i==0&&i == 2||n%i==0&&i == 3||n%i==0&&i==5||n%i==0&&i==7) p = i
+    if(p>max) max = p
+  }
+  if(max == 0){
+    for(let i = 2;i<parseInt(Math.sqrt(n));i++){
+    if(n%i==0&&i%2!=0&&i%3!=0&i%5!=0&&i%7!=0||n%i==0&&i == 2||n%i==0&&i == 3||n%i==0&&i==5||n%i==0&&i==7) p = i
+    if(p>max) max = p
+   }
+  }
+  console.log(max)
+</script>
+<script type="x" id="ch0105/44">
+   let n = +prompt('n = ')
+   let num = 0
+   for(let i = 2;i<=10000;i++){
+    if(i%2!=0&&i%3!=0&i%5!=0&&i%7!=0||i == 2||i == 3||i==5||i==7){
+      num++
+    }
+    if(num==n){
+      console.log(i)
+      break
+    }
+  }
+</script>
+<script type="x" id="ch0105/45">
+  let n = +prompt('')
+  let sum = 0
+  let i = 1
+  let day = 0
+  while(day<n){
+    let k = 0
+    for(let j = 0;j<i;j++){
+      k++
+      if(day+k>n) break
+      sum+=i
+    }
+    i++
+    day += k
+  }
+  console.log(sum)
 </script>
