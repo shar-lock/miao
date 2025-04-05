@@ -128,7 +128,7 @@ function BezierCurve(x1,y1,x2,y2,x3,y3,t){
   return [x,y]
 }
 for(let t=0;t<=1;t+=0.001){
-  dot(BezierCurve(0,1000,500,0,1000,1000,t)[0],BezierCurve(0,1000,500,0,1000,1000,t)[1],'red')
+  dot(BezierCurve(0,1000,500,500,252,353,t)[0],BezierCurve(0,1000,500,500,252,353,t)[1],'red')
 }
 function matrix(n1,n2,n3,n4,x0,y0){
   let x = n1 * x0 + n3 * y0
