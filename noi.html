@@ -895,7 +895,7 @@ console.log(sum.toFixed(2))
       else sum += j * C +' '
     }
     if(m == 0) console.log('0')
-    else console.log(sum.slice(0,sum.length - 1))
+    else console.log(sum.trim())
     sum = ''
   }
   
@@ -903,12 +903,11 @@ console.log(sum.toFixed(2))
 <script  id="ch0105/39">
   let n = +prompt('')
   let sum = 0
-  let flag = false
   for(let i = 1;i<=n;i++){
+    let flag = false
     if(i%7==0) flag = true
     else if(i%10==7||parseInt(i/10)==7) flag = true
     if(!flag) sum += i*i
-    flag = false
   }
   console.log(sum)
 </script>
@@ -987,8 +986,14 @@ console.log(sum.toFixed(2))
 <script  id="ch0105/44">
    let n = +prompt('n = ')
    let num = 0
+   function isPrime(n){
+    for(let i = 2;i<=Math.sqrt(n);i++){
+      if(n%i==0) return false
+    }
+    return true
+   }
    for(let i = 2;i<=10000;i++){
-    if(i%2!=0&&i%3!=0&i%5!=0&&i%7!=0||i == 2||i == 3||i==5||i==7){
+    if(isPrime(i)){
       num++
     }
     if(num==n){
@@ -998,19 +1003,17 @@ console.log(sum.toFixed(2))
   }
 </script>
 <script  id="ch0105/45">
-  let n = +prompt('')
+  let days = +prompt('')
   let sum = 0
-  let i = 1
+  let count = 1
   let day = 0
-  while(day<n){
-    let k = 0
-    for(let j = 0;j<i;j++){
-      k++
-      if(day+k>n) break
-      sum+=i
+  for(let i = 1;i<=days;i++){
+    sum += count
+    day++
+    if(count === day){
+      count++
+      day = 0
     }
-    i++
-    day += k
   }
   console.log(sum)
 </script>

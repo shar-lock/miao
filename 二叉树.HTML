@@ -1,0 +1,143 @@
+<script>
+  /*
+  * 二叉树的定义
+  *  一个结点，其有一颗左子树和一颗右子树
+  *   左子树是一颗二叉树
+  * 
+  *  二叉树的结构是递归的
+  *  完全二叉树：从左往右、从上往下除了最后一层以外每层都有两个子结点
+  *  满二叉树：只有最后一层没有子结点，且每个子节点有两个字结点
+  * 如何表示
+  *   二叉链表
+  */ 
+   
+   //将保存在array的数据转化为完全二叉树
+   function arrayToTree(array,rootPos = 0){
+    let val = array[rootPos]
+    if(val==null){
+      return null
+    }
+    var node = {
+      val:val,
+      left:null,
+      right:null,
+    }
+    node.left = arrayToTree(array,rootPos * 2 + 1)
+    node.right = arrayToTree(array,rootPos * 2 + 2)
+    return node
+   }
+
+   //完全二叉树转化为数组
+   function treeToArray(tree,rootPos = 0,array){
+     array[rootPos] = tree.val
+     treeToArray(tree.left,rootPos * 2 + 1)
+     treeToArray(tree.right,rootPos * 2 + 2)
+     return array
+   }
+
+   //
+   function condenseArrayToTree(array){
+    if (array.length == 0) {
+      return null
+    }
+    var rootVal = array[0]
+    if (rootVal == null) {
+      return null
+    }
+    var rootNode = {
+      val: rootVal,
+      left: null,
+      right: null,
+    }
+    var nodes = [rootNode]
+    for (var i = 1; i < array.length; i++) {
+      var currentNode = nodes.shift()
+      var val = array[i]
+      if (val != null) {
+        var node = {
+          val: val,
+          left: null,
+          right: null,
+        }
+        currentNode.left = node
+        nodes.push(node)
+      }
+      i++
+      var val = array[i]
+      if (val != null) {
+        var node = {
+          val: val,
+          left: null,
+          right: null,
+        }
+        currentNode.right = node
+        nodes.push(node)
+      }
+    }
+    return rootNode
+   }
+
+   //遍历二叉树
+   
+   //先序遍历，先遍历根节点
+   function preOrderTraverse(tree,action){
+     if(root){
+      action(root.val)
+      preOrderTraverse(root.left,action)
+      preOrderTraverse(root.right,action)
+     }
+   }
+
+   //中序遍历 先遍历左子树
+   function inOrderTraverse(tree,action){
+     if(root){
+      inOrderTraverse(root.left,action)
+      action(root.val)
+      inOrderTraverse(root.right,action)
+     }
+   }
+
+   //后续遍历 先遍历左子树再遍历右子树最后遍历根节点
+   function postOrderTraverse(tree,action){
+     if(root){
+      postOrderTraverse(root.left,action)
+      postOrderTraverse(root.right,action)
+      action(root.val)
+     }
+   }
+
+   //排序二叉树
+   //二叉搜索树
+   //每个结点的左子树中的所有结点都小于根结点
+   //每个结点的右子树中的所有结点都大于等于根结点
+   //对于一个排序二叉树进行中序或者反向中序遍历会的到有序的数据
+   
+   //用bst实现一个排序算法
+   //将val插入到排序二叉树root中，并返回新的根结点
+   function insertIntoBST(root,val){
+    if(root == null) return {
+      val:val,
+      left:null,
+      right:null,
+    }
+    if(val<root.value){
+      root.left = insertIntoBST(root.left,val)
+    }else{
+      root.right = insertIntoBST(root.right,val)
+    }
+    return root
+   }
+   
+   function bstSort(array){
+    let root = null
+    for(let i = 0;i<array,length;i++){
+      root = insertIntoBST(root,array[i])
+    }
+
+    let i = 0
+    inOrderTraverse(root,val =>{
+      array[i++] = val
+    })
+    return array
+  }
+</script>

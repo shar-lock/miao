@@ -1,0 +1,125 @@
+<script>
+  function randomArray(len){//生成长度为len的随机整数数组，长度小于len
+    let arr = []
+    for(let i =0;i<len;i++){
+      arr.push(Math.floor(Math.random()*len))
+    }
+    return arr
+  }
+  function swap(array,i,j){
+    let temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+  function isSorted(array){
+    for(let i = 0;i<array.length - 1;i++){
+      if(array[i]>array[i+1]) return false
+    }
+    return true
+  }
+
+  function insetSort(array){//插入排序
+    for(let i = 1;i<array.length;i++){
+      for(let j = i - 1;j>=0&&array[j]>array[j+1];j--){
+        swap(array,j,j+1)
+      }
+    }
+    return array
+  }
+
+  function selectSort(array){//选择排序
+    for(let i = 0;i<array.length-1;i++){
+      let min = array[i]
+      let Minpos = i
+      for(let j = i + 1;j<array.length;j++){
+        Minpos = min > array[j] ?  j : Minpos
+        min = min > array[j] ? array[j] : min
+      }
+      swap(array,Minpos,i)
+    }
+    return array
+  }
+
+  function bubbleSort(array){//冒泡排序
+    for(let i = array.length - 1;i>=0;i--){
+      for(let j = 0;j<i;j++){
+        if(array[j]>array[j+1]){
+          swap(array,j,j+1)
+        }
+      }
+    }
+    return array
+  }
+
+  function quickSort1(array){//快速排序
+  
+      //递归 额外数组
+  if(array.length<2){
+    return array.slice()
+   }
+   let p = array[array.length * Math.random() | 0]
+   let left = []
+   let middle = []
+   let right = []
+   for(let i = 0;i<array.length;i++){
+    if(array[i]<p){
+      left.push(arra[i])
+    }else if(array[i]==p){
+      middle.push(array[i])
+    }else{
+      right.push(array[i])
+    }
+   }
+    left = quickSort(left)
+    right = quickSort(right)
+    return left.concat(middle,right)
+  }
+
+  function quickSort2(array,start = 0,end = array.length - 1){
+    if(end - start <1){
+      return array
+    }
+    let pindex = Math.random() * (end - start + 1) + start | 0
+    let pivot = array[pindex] //哨兵元素
+    swap(array,pindex,end)
+    let i = start //i以前的元素小于哨兵元素 j以前的元素大于哨兵元素
+    for(let j = start;j<end;j++){
+      if(array[j]<pivot){
+        swap(array,i,j)
+        i++
+      }
+    }
+    swap(array,i,end)
+    quickSort2(array,start,i-1)
+    quickSort2(array,i+1,end)
+    return array
+  }
+
+  function mergeSort(array){//归并排序
+    if(array.length == 1) return array
+    let mid = array.length >> 1
+    let left = array.slice(0,mid) 
+    let right = array.slice(mid)
+    
+    left = mergeSort(left)
+    right = mergeSort(right)
+
+    let i = 0
+    let j = 0
+    let k = 0
+    while(i<left.length&&j<right.length){
+      if(left[i]<=right[j]){
+        array[k++] = left[i++]
+      }else{
+        array[k++] = right[j++]
+      }
+    }
+    while(i<left.length){
+      array[k++] = left[i++]
+    }
+    while(j<right.length){
+      array[k++] = right[j++]
+    }
+    return array
+  }
+</script>
