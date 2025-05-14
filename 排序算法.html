@@ -75,23 +75,22 @@
     return left.concat(middle,right)
   }
 
-  function quickSort2(array,start = 0,end = array.length - 1){
-    if(end - start <1){
+  function quickSort2(array,L = 0,R = array.length - 1){
+    if(R - L <1){
       return array
     }
-    let pindex = Math.random() * (end - start + 1) + start | 0
+    let pindex = Math.random() * (R - L + 1) + L | 0
     let pivot = array[pindex] //哨兵元素
-    swap(array,pindex,end)
-    let i = start //i以前的元素小于哨兵元素 j以前的元素大于哨兵元素
-    for(let j = start;j<end;j++){
+    swap(array,pindex,R)
+    let i = L //i以前的元素小于哨兵元素 j以前的元素大于哨兵元素
+    for(let j = L;j<R;j++){
       if(array[j]<pivot){
-        swap(array,i,j)
-        i++
+        swap(array,i++,j)
       }
     }
-    swap(array,i,end)
-    quickSort2(array,start,i-1)
-    quickSort2(array,i+1,end)
+    swap(array,i,R)
+    quickSort2(array,L,i-1)
+    quickSort2(array,i+1,R)
     return array
   }
 

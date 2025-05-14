@@ -114,6 +114,9 @@
    
    //用bst实现一个排序算法
    //将val插入到排序二叉树root中，并返回新的根结点
+   //时间复杂度为O(N*logN)
+   //空间复杂度
+
    function insertIntoBST(root,val){
     if(root == null) return {
       val:val,
@@ -127,7 +130,7 @@
     }
     return root
    }
-   
+
    function bstSort(array){
     let root = null
     for(let i = 0;i<array,length;i++){
@@ -140,4 +143,44 @@
     })
     return array
   }
+  /**
+   * BST 无法保持自平衡
+   * 存在另外的树可以有更多规则
+   * 可以让树保持平衡
+   * 如avl树、红黑树
+   * 
+  */
+
+class TreeNode{
+  constructor(val){
+    this.val = val
+    this.right = null
+    this.left = null
+  }
+}
+class BinarySearchTree{
+  constructor(root){
+    this.root = root
+  }
+  insert(val,root){
+    if(this.root.val<val&&root.right==null){
+      let node = new TreeNode(val)
+      root.right = node
+      return 
+    }
+    if(this.root.val>val&&root.left==null){
+      let node = new TreeNode(val)
+      root.left = node
+      return
+    }
+    if(root.val<val) return this.insert(val,root.right)
+    if(root.val>val) return this.insert(val,root.left)
+  }
+  traverse(root,action){
+    if(root == null) return 
+    this.traverse(root.left,action)
+    action(root.val)
+    this.traverse(root.right,action)
+  }
+}
 </script>

@@ -1,0 +1,165 @@
+<script>
+  //用来维护动态集合的最值  Heap
+  //优先队列(最值是优先的) Priority Queue
+  
+  //堆是一个完全二叉树，子节点都比根节点小或者大(小为小顶堆，大为大顶堆)
+  //只保留最值的序，用数组或链表存储
+  //建议用简单形式的数组
+  
+  //有两个操作，增加一个元素，弹出栈顶元素
+  function swap(vals,i,j){
+      let temp = vals[i]
+      vals[i] = vals[j]
+      vals[j] = temp
+    }
+  class PriorityQueue{
+    constructor(){
+      this._vals = []
+    }
+    _swap(i,j){
+      let temp = this._vals[i]
+      this._vals[i] = this._vals[j]
+      this._vals[j] = temp
+    }
+    //添加堆元素
+    push(val){
+      this._vals.push(val)
+      let idx = this._vals.length - 1
+      while(idx>0){
+        let index = (idx - 1) >> 1
+        if(this._vals[idx]>this._vals[index]){
+          this._swap(idx,index)
+        }else{
+          break
+        }
+        idx = index
+      }
+      return this
+    }
+    //弹出堆顶元素
+    pop(){
+      if(this._vals.length === 0) return undefined
+      if(this._vals.length === 1){
+        return this._vals.pop()
+      }
+      let res = this._vals[0]
+      this._vals[0] = this._vals.pop()
+      let i = 0
+      let left = i * 2 + 1
+      while(left<this._vals.length){
+        let largest = left + 1 < this._vals.length && this._vals[left + 1] > this._vals[left] ? left + 1 : left
+        largest = this._vals[largest] > this._vals[i] ? largest : i
+        if(largest===i){
+          break
+        } 
+        this._swap(i,largest)
+        i = largest
+        left = i * 2 + 1
+      }
+      return res
+    }
+    peek(){
+      return this._vals[0]
+    }
+    get heapSize(){
+      return this._vals.length
+    }
+  }
+ 
+ //predicate 为对象内的某个属性
+  class PriorityQueue2{
+    constructor(predicate = it => it){
+      this._vals = []
+      this.predicate = predicate
+    }
+    _swap(i,j){
+      let temp = this._vals[i]
+
+      this._vals[i] = this._vals[j]
+      this._vals[j] = temp
+    }
+    //添加堆元素
+    push(val){
+      this._vals.push(predicate)
+      let idx = this._vals.length - 1
+      while(idx>0){
+        let index = (idx - 1) >> 1
+        if(this.predicate(this._vals[idx])>this.predicate(this._vals[index])){
+          this._swap(idx,index)
+        }else{
+          break
+        }
+        idx = index
+      }
+      return this
+    }
+    //弹出堆顶元素
+    pop(){
+      if(this._vals.length === 0) return undefined
+      if(this._vals.length === 1){
+        return this._vals.pop()
+      }
+      let res = this._vals[0]
+      this._vals[0] = this._vals.pop()
+      let i = 0
+      let left = i * 2 + 1
+      while(left<this._vals.length){
+        let largest = left + 1 < this._vals.length && this.predicate(this._vals[left + 1]) > this.predicate(this._vals[left]) ? left + 1 : left
+        largest = this.predicate(this._vals[largest]) > this.predicate(this._vals[i]) ? largest : i
+        if(largest===i){
+          break
+        } 
+        this._swap(i,largest)
+        i = largest
+        left = i * 2 + 1
+      }
+      return res
+    }
+    peek(){
+      return this._vals[0]
+    }
+    get heapSize(){
+      return this._vals.length
+    }
+  }
+
+
+
+  
+ //将数组堆化
+ function heapify(array){
+    for(let i = (array.length - 2)>>1;i>=0;i--){
+      heapdown(array,i)
+    }
+    return array
+  }
+
+  //往下堆化
+  function heapdown(array,i,end = array.length){
+    let left = i * 2 + 1
+      while(left<end){
+        let largest = left + 1 < end && array[left + 1] > array[left] ? left + 1 : left
+        largest = array[largest] > array[i] ? largest : i
+        if(largest===i){
+          break
+        } 
+        swap(array,i,largest)
+        i = largest
+        left = i * 2 + 1
+      }
+  }
+
+  //堆排序
+  //时间复杂度 O(n*logn)
+  //空间复杂度 O(1)
+  //稳定性：不稳定
+  function heapSortInplace(array){
+    heapify(array)
+    for(let i = array.length - 1;i>0;i--){
+      swap(array,0,i)
+      heapdown(array,0,i)
+    }
+    return array
+  }
+ 
+</script>
