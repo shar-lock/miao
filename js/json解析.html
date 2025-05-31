@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    //递归下降实现json解析
+    //即对于递归结构的文本解析
+    function praseJSON(input){
+     let i = 0
+     return parseValue()
+      //从i位置开始扫描解析并构造出一个对象，并返回
+      function parseObject(){
+        let res = {}
+        i++ //skip {
+        if(input[i]==='}'){
+          i++
+          return res
+        }
+        while(i<input.length){
+        let kay = parseString()
+        if(input[i]!==':') {
+          throw new SyntaxError('expected `:` but got '+ input[i])
+        }
+        i++// skip : 
+        let value = parseValue()
+        res[key] = value
+        if(input[i]===','){
+          i++
+        }else if(input[i]=='}'){
+          i++
+          break
+        }
+       }
+       return res
+      }
+      function parseArray(){
+        let res = []
+        i++
+        if(input[i]==']'){
+          i++
+          return res
+        }
+        while(i<input.length){
+          let val = parseValue()
+          res.push(val)
+          if(input[i]==','){
+            i++ //skip ,
+          }else if(input==']'){
+            i++//sikp ]
+            break
+          }
+        }
+        return res
+      }
+      function parseValue(){
+          if(input[i] === '{'){
+          return parseObject()
+        }else if(input[i] === '['){
+          return parseArray()
+        }else if(input[i] === '"'){
+          return parseString()
+        }else if(input[i] === 't'){
+          if(input.slice(i,i+4)==='true'){
+             i+=4
+             return true
+          }else{
+            throw new SyntaxError('unexpected token at position: ' + i)
+          }
+        }else if(input[i] === 'f'){
+          i+=5
+          return false
+        }else if(input[i] === 'n' ){
+          i+=4
+          return null
+        }else{
+          return parseNumber()
+        }
+      }
+      function parseString(){
+        i++ //skip "
+        let startIdx = i
+        while(input[i]!=='"'){
+          i++
+        }
+        let res = input.slice(startIdx,i)
+        i++ //skip ending "
+        return res
+      }
+      //只考虑整数
+      function parseNumber(){
+        let startIdx = i
+        while(input[i]>='0'&&input[i]<='9'){
+          i++
+        }
+        return Number(input.slice(startIdx,i))
+      }
+    }
+  </script>
+</body>
+</html>

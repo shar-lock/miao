@@ -1,0 +1,78 @@
+<script>
+  //创建正则表达式
+  let re1= new RegExp('abc')
+  let re2 = /abc/
+  re = /add\+/ // ? + _ * / 在正则表达式有特殊含义，表示字符本身需要在字符前加\
+  console.log(/abc/.test('abceer'))
+  console.log(/[1234567890]/.test('dasih7s4a21do'))//匹配数字
+  console.log(/[0-9]/.test('dasih7s4a21do'))// [] 匹配方括号内任意一个字符 - 两个字符间unicode的代码决定
+
+  let dayTime = /\d\d\d\d-\d\d-\d\d \d\d:\d\d/
+  re1 = /[^01]/ //不是0和1 
+  re1 = /\d+/ // +该元素至少重复一次
+  re1 = /\d*/ // *出现任意数量，甚至可以不存在
+  re1 = /neighbou?r/ //？表示这部分元素可选可能出现0次或1次
+  re1 = /a{4}/ //{}表示这部分只能出现几次 {2，4}之能出现两次或4次 {n.}至少出现n次
+  
+  dayTime = /\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{2}/
+
+  let cartoonCary = /boo+(hoo+)+/i //（）内的元素为一个整体 i表示忽略大小写
+
+  //exec 方法 返回一个匹配字符串的信息对象，没有返回null index属性返回下标
+  dayTime.exec('2001-12-24 12:20')//'2001-12-24 12:20'
+  dayTime.exec('2001-12-24 12:20').index // 0
+
+  //分组捕获:()内的元素也会被exec 额外捕获一次添加到对象中
+  console.log(/(\d{4})-(\d{1,2})-(\d{1,2}) (\d{1,2}):(\d{2})/.exec('2001-12-24 12:20')) // ['2001-12-24 12:20',2001,12,24,12,30]
+  console.log(/bad(ly)?/.exec('bad'))//[bad,undefined]
+  console.log(/(\d)+/.exec('123'))//['123',3] //若匹配多个元素，则数组只包含最后一个匹配项
+
+    
+  // 零宽断言 ()不计入分组
+  // positive lookahead (?=xxx) 某个位置右边是xxx
+  // negative lookahead (?!xxx) 某个位置的右边不能以任何形式匹配xxx
+  // positive lookbehind (?<=xxx) 某个位置左边是xxx
+  // negative lookbehind (?<!xxx) 某个位置的左边不能以任何形式匹配xxx
+  // ^ $ \b    
+  // ^ :字符串的开始 $：字符串的结束  /^$/匹配空字符串 /^!/ 匹配任何以！开头的字符串
+  // \b 单词边界 
+ console.log(/\bcat\b/.test('concatenate')) // false
+ console.log(/\bcat\b/.test('cat')) //true
+
+ //选择模式
+ let animalCount = /\b\d+ (pig|cow|chicken)s?\b)/  // | 选择左右两个任意一个匹配
+
+ //replace方法 只替换第一个
+  'papa'.replace('p','m') //mapa
+
+  Borobudur.replace(/[ou]/,"a") //Barobudur
+  //g : 全局替换  i : 不区分大小写
+  Borobudur.replace(/[ou]/g,"a") //Barabadar
+
+  //$& --> $1 $2 ....  表示捕获的第几个括号包裹的元组
+  'foo , goo'.replace(/(\w+) , (\w+)/g,'$2 $1') // goo foo
+
+  //第二个参数可以传一个函数 返回值插入到替换的位置
+
+ //贪婪模式 运算符会尽量多的匹配可以匹配的字符
+  // replace(/\/\/.*|\/\*[^]*\*\//,'') 清除注释
+ '1 /* a */ + /*b*/ 1'.replace(/\/\/.*|\/\*[^]*\*\//,'') // 1 1 贪婪匹配
+ //(+? *? ?? {}?) 非贪婪模式
+ '1 /* a */ + /*b*/ 1'.replace(/\/\/.*|\/\*[^]*?\*\//,'')// 1 + 1 非贪婪匹配
+
+
+ //动态创建正则表达式对象
+  let regexp = new RegExp('/\\b(' + name + ')\\b','g')
+
+
+  //String.raw`` 标签语法模块
+  // 
+  //   反引号内部相当于传入参数字符串
+  function raw(parts,...vals){
+    let res = ''
+    for(let i = 0;i<parts.raw.length;i++){
+      res += parts.raw[i] + (vals[i] || '')
+    }
+    return res
+  }
+</script>

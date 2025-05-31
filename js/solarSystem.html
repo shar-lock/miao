@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .sun{
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 9999px;
+      position: fixed;
+    }
+    .earth{
+      width: 30px;
+      height: 30px;
+      background-color: blue;
+      border-radius: 9999px;
+      position: fixed;
+    }
+    .moon{
+      width: 10px;
+      height: 10px;
+      background-color: orange;
+      border-radius: 9999px;
+      position: fixed;
+    }
+  </style>
+</head>
+<body>
+  <div class="sun"></div>
+  <div class="earth"></div>
+  <div class="moon"></div>
+  <script>
+    let sun = document.querySelector('.sun')
+    let earch = document.querySelector('.earth')
+    let moon = document.querySelector('.moon')
+    requestAnimationFrame(function ani(time){
+      let angle1 = time * 0.001
+      let sunX = Math.sin(angle1) * 30 - 25 + window.innerWidth/2 
+      let sunY = Math.cos(angle1) * 30 - 25 + window.innerHeight/2
+      sun.style.left = sunX + 'px'
+      sun.style.top = sunY + 'px'
+      let angle2 = time * 0.002
+      let earchX = Math.sin(angle2) * 180 - 15 + sunX + 25
+      let earchY = Math.cos(angle2) * 150 - 15 + sunY + 25
+      earch.style.left = earchX + 'px'
+      earch.style.top = earchY + 'px'
+      let angle3 = time * 0.003
+      let moonX = Math.sin(angle3) * 50 - 5 + earchX + 15
+      let moonY = Math.cos(angle3) * 50 - 5 + earchY + 15
+      moon.style.left = moonX + 'px'
+      moon.style.top = moonY + 'px'
+      requestAnimationFrame(ani)
+    })
+  </script>
+</body>
+</html>

@@ -42,8 +42,8 @@
       if(this._vals.length === 1){
         return this._vals.pop()
       }
-      let res = this._vals[0]
-      this._vals[0] = this._vals.pop()
+      let res = this._vals[0] // 返回的是第一个元素
+      this._vals[0] = this._vals.pop()//最后一个元素弹出代替第一个元素
       let i = 0
       let left = i * 2 + 1
       while(left<this._vals.length){
@@ -161,5 +161,7 @@
     }
     return array
   }
- 
+
+
+
 </script>

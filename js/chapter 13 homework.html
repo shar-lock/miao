@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function buildTable(objs){
+      let table = document.createElement('table')
+      let keys = Object.keys(objs[0])
+      let tr = document.createElement('tr')
+      for(let key of keys){
+        let th = document.createElement('th')
+        th.appendChild(document.createTextNode(key))
+        tr.appendChild(th)
+      }
+      table.appendChild(tr)
+      for(let obj of objs){
+        let tr = document.createElement('tr')
+        for(let key of keys){
+          let val = obj[key]
+          let td = document.createElement('td')
+          td.appendChild(document.createTextNode(val))
+          if(typeof val === 'number'){
+            td.style.textAlign = 'right'
+          }
+          tr.appendChild(td)
+        }
+        table.appendChild(tr)
+      }
+      return table
+    }
+
+    
+    function traverse(node,fn){
+      if(node.nodeType==document.ELEMENT_NODE){
+        if(fn(node)==false) return false
+        for(const child of node.children){
+          if(traverse(child,fn)==false) return false
+        }
+      }
+    }
+    function getElementsByTagName(tagName){
+      let res = []
+      traverse(document.documentElement,ele=>{
+        if(ele.tagName.toLowerCase() === tagName){
+          res.push(ele)
+        }
+      })
+      return res
+    }
+
+
+    function getElementById(id){
+      let res = null 
+      traverse(document.documentElement,el=>{
+        if(el.id == id) res =  el
+        return false
+      })
+      return res
+    }
+    function getElementById(id,node = document.documentElement){
+      if(node.id==id){
+        return node
+      }else{
+        for(let child of node.children){
+          let res = getElementById(id,child)
+          if(res){
+            return res
+          }
+        }
+        return null
+      }
+    }
+
+    function getInnerHTML(node){
+      let res = ''
+      for(let child of node.childNodes){
+        if(child.nodeType == document.TEXT_NODE){
+          res += child.nodeValue
+        }else if(child.nodeType==document.ELEMENT_NODE){
+          res += `<${child.tagName.toLowerCase()} ${getAtrr(child)}>` + getInnerHTML(child) + `</${child.tagName.toLowerCase()}>` 
+        }
+      }
+      return res
+    }
+
+    function getAtrr(node){
+      let res = ''
+      for(let attr of node.getAttributeNames()){
+        if(node.getAttribute(attr) === '') res += `${attr}`
+        else res += `${attr}="${node.getAttribute(attr)}" `
+      }
+      return res
+    }
+    function getOuterHTML(node){
+      if(node.nodeType == document.TEXT_NODE){
+          return node.nodeValue
+        }else if(node.nodeType==document.ELEMENT_NODE){
+          let res = `<${node.tagName.toLowerCase()} ${getAtrr(node)}>`
+          for(let child of node.childNodes){
+            res += getOuterHTML(child)
+          }
+          res += `</${node.tagName.toLowerCase()}>`
+          return res
+        }else if(node.nodeType==document.COMMENT_NODE){
+          return `<!--${node.nodeValue}-->`
+        }else{
+          return ''
+        }
+    }
+  </script>
+</body>
+</html>
