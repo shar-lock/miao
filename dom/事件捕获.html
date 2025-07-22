@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button>button</button>
+  </div>
+  <script>
+    let div = document.querySelector('div')
+    let btn = document.querySelector('button')
+    let body = document.querySelector('body')
+    btn.addEventListener('click',e=>{
+      console.log('btn maopao')
+    })
+    btn.addEventListener('click',e=>{
+      console.log('btn capture')
+    },{capture:true})
+    div.addEventListener('click',e=>{
+      console.log('div capture')
+    },{capture:true})
+    div.addEventListener('click',e=>{
+      console.log('div maopao')
+    })
+    body.addEventListener('click',e=>{
+      console.log('body capture')
+    },{capture:true})
+    body.addEventListener('click',e=>{
+      console.log('body maopao')
+    })
+  </script>
+</body>
+</html>

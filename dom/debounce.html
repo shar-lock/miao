@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>
+    debounce click
+  </button>
+  <button>
+    throttle click
+  </button>
+  <script>
+    function debounce(fn,time){
+      let timer
+      return function(...args){
+      clearTimeout(timer)
+      timer = setTimeout(()=>{
+        fn(...args)
+      },time)
+      }
+    }
+
+
+
+    let i = 1
+    const btn = document.querySelector('button')
+    btn.addEventListener('click',debounce(function(){
+      console.log(i++)
+    }
+    ,1000))
+
+
+
+    function throttle(fn,time){
+      let scheduled = false
+      let lastevent 
+      return function(...args){
+        lastevent = args
+        if(!scheduled){
+          scheduled = true
+          setTimeout(()=>{
+            scheduled = false
+            fn(...lastevent)
+          },time)
+        }
+      }
+    }
+
+
+
+    let k = 1
+    const btn2 = document.querySelector('button:nth-child(2)')
+    btn2.addEventListener('click',throttle(function(){
+      console.log(k++)
+    },1000))
+  </script>
+</body>
+</html>

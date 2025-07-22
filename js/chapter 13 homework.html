@@ -36,9 +36,9 @@
     
     function traverse(node,fn){
       if(node.nodeType==document.ELEMENT_NODE){
-        if(fn(node)==false) return false
+        if(fn(node)===false) return false
         for(const child of node.children){
-          if(traverse(child,fn)==false) return false
+          if(traverse(child,fn)===false) return false
         }
       }
     }
@@ -56,8 +56,10 @@
     function getElementById(id){
       let res = null 
       traverse(document.documentElement,el=>{
-        if(el.id == id) res =  el
-        return false
+        if(el.id == id){ 
+          res =  el
+          return false
+        }
       })
       return res
     }

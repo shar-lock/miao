@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .fire{
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <span class="fire"></span><span class="fire"></span><span class="fire"></span>
+  <script>
+    let fires = document.querySelectorAll('.fire')
+    let mousex = 0
+    let mousey = 0
+    addEventListener('mousemove',e=>{
+      mousex = e.clientX
+      mousey = e.clientY
+    })
+    requestAnimationFrame(function ani(time){
+      let angle = time * 0.01
+      let x1 = Math.sin(angle) * 50 + mousex
+      let y1 = Math.cos(angle) * 50 + mousey 
+      fires[0].style.left = x1 + 'px'
+      fires[0].style.top = y1 + 'px'
+      
+      let x2 = Math.sin(angle + 2 * Math.PI / 3) * 50 + mousex
+      let y2 = Math.cos(angle + 2 * Math.PI / 3) * 50 + mousey
+      fires[1].style.left = x2 + 'px'
+      fires[1].style.top = y2 + 'px'
+
+      let x3 = Math.sin(angle + 4 * Math.PI / 3) * 50 + mousex
+      let y3 = Math.cos(angle + 4 * Math.PI / 3) * 50 + mousey
+      fires[2].style.left = x3 + 'px'
+      fires[2].style.top = y3 + 'px'
+      requestAnimationFrame(ani)
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea name="" id="codeInput"></textarea>
+  <button id="button">Run</button>
+  <pre id="output"></pre>
+  <script>
+    const btn = document.querySelector('#button')
+    btn.addEventListener('click',e=>{
+      output.textContent = ''
+      let code = codeInput.value
+      let console = {
+        log:function(...args){
+          let text = args.join(' ')
+          output.textContent += text +'\n'
+        },
+      }
+      let res = eval(code)
+      output.textContent += res + '\n'
+    })
+  </script>
+</body>
+</html>

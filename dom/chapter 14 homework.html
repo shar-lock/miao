@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea name="text" id="ck" cols="50px" rows="50px"></textarea>
+  <script>
+    
+    let ck = document.querySelector('#ck')
+    ck.addEventListener('keypress',e =>{
+      if(e.key=='W'||e.key=='X'||e.key=='Q'){
+        e.preventDefault()
+      }
+    })
+
+    //粘贴事件
+    ck.addEventListener('paste',e=>{
+      e.preventDefault()
+      let pasteData = e.clipboardData.getData('text/plain')
+      pasteData = pasteData.replace(/[WQX]/g,'*')
+      let form = ck.selectionStart
+      let to = ck.selectionEnd
+      ck.value = ck.value.slice(0,form) + pasteData + ck.value.slice(to)
+      ck.selectionStart = ck.selectionEnd = form + pasteData.length
+    })
+    //拖拽事件
+    ck.addEventListener('drop',e=>{
+      e.preventDefault()
+    })
+    //输入法
+    ck.addEventListener('compositionstart',e=>{
+      console.log(e)
+    })
+  </script>
+</body>
+</html>

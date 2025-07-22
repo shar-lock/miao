@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>game of life</title>
+  <style>
+    input{
+      margin: 0;
+      width: 15px;
+      height: 15px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="stage">
+
+  </div>
+  <button id="nextGeneration">next generation</button>
+  <button id="autoplay">autoplay</button>
+  <script>
+    class Conway{
+      constructor(h,w){
+        this.wid = w
+        this.height = h
+        this.grid = new Array(h).fill(0).map(it=>new Array(w).fill(0))
+      }
+      set(row,col,val = 1){
+        this.grid[row][col] = val
+      }
+      randomSeed(){
+        for(let i = 0;i<this.height;i++){
+          for(let j = 0;j<this.wid;j++){
+            if(Math.random()<0.4){  
+              this.grid[i][j] = 1
+            }
+          }
+        }
+        return this
+     }
+      countNeighbor(row,col){
+        let count = 0
+        for(let r = row - 1;r <= row + 1;r++){
+          if(r<0||r>=this.height) continue
+          for(let c = col - 1;c <= col + 1;c++){
+            if(c<0||c>=this.wid) continue
+            if(this.grid[r][c]===1){
+              count++
+            }
+          }
+        }
+        return count - this.grid[row][col]
+      }
+      next(){
+        let newgrid = new Array(this.height).fill(0).map(it=>new Array(this.wid).fill(0))
+        for(let i = 0;i<this.height;i++){
+          for(let j = 0;j<this.wid;j++){
+           let n =  this.countNeighbor(i,j)
+          if(n<2||n>3){
+            newgrid[i][j] = 0
+           }else{
+            if(n==3) {
+              newgrid[i][j] = 1
+            }else{
+               newgrid[i][j] = this.grid[i][j]
+            }
+           }
+          }
+        }
+        this.grid = newgrid
+        return this
+      }
+      toHtml(){
+        let res = '<div>'
+        for(let i = 0;i<this.height;i++){
+          for(let j = 0;j<this.wid;j++){
+            if(this.grid[i][j] == 1){
+              res += `<input type="checkbox" data-row="${i}" data-col="${j}" checked>`
+            }else{
+              res += `<input type="checkbox" data-row="${i}" data-col="${j}">`
+            }
+          }
+          res += '<br>'
+        }
+        res += '</div>'
+        return res
+      }
+    }
+    var game = new Conway(70,70)
+    game.randomSeed()
+    stage.innerHTML = game.toHtml()
+    const nextGeneration = document.querySelector('#nextGeneration')
+    nextGeneration.addEventListener('click',e=>{
+      game.next()
+      stage.innerHTML = game.toHtml()
+    })
+    stage.addEventListener('click',e=>{
+      if(e.target.matches('input')){
+        game.set(e.target.dataset.row,e.target.dataset.col,e.target.checked ? 1 : 0)
+      }
+    })
+    let timer 
+    let isrunning = false
+    autoplay.onclick = ()=>{
+      if(isrunning){
+        clearInterval(timer)
+        isrunning = false
+      }else{
+        isrunning = true
+        timer =  setInterval(()=>{
+        nextGeneration.click()
+       },500)
+     }
+    }
+  </script>
+</body>
+</html>

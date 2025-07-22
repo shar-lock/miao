@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .mouse-shadow{
+     position: fixed;
+     width: 10px;
+     height: 10px;
+     border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    addEventListener('mousemove',e=>{
+      let shadow = document.createElement('span')
+      shadow.classList.add('mouse-shadow')
+      shadow.style.left = e.clientX + 'px'
+      shadow.style.top = e.clientY + 'px'
+      shadow.style.backgroundColor = `rgb(${e.clientX%200},${e.clientY%200},${(e.clientX + e.clientY) * 200})`
+      setTimeout(()=>{
+        document.body.removeChild(shadow)
+      },200)
+      document.body.append(shadow)
+    })
+  </script>
+</body>
+</html>

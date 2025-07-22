@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Drag the bar to change its width</p>
+  <div style="background:orange;width:60px;height:20px;"></div>
+  <script>
+    let lastX
+    let lastWid
+    let rect = document.querySelector('div')
+    rect.addEventListener('mousedown',function(e){
+      if(e.which==1){
+        lastX = e.pageX
+        lastWid = rect.offsetWidth
+        addEventListener('mousemove',moved)
+        e.preventDefault()
+      }
+    })
+    function moved(e){
+      if(e.which != 1){
+        removeEventListener("mousemove",moved)
+      }else{
+        let dist = e.pageX - lastX
+        let newWidth = Math.max(10,lastWid + dist)
+        rect.style.width = newWidth + 'px'
+      }
+    }
+  </script>
+</body>
+</html>

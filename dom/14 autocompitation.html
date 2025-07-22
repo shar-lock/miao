@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="field">
+<div id="suggestions" style= "cursor: pointer"></div>
+
+<script>
+  // Builds up an array with global variable names, like
+  // 'alert', 'document', and 'scrollTo'
+  var terms = [];
+  for (var name in window)
+    terms.push(name);
+
+    let input = document.querySelector('input')
+    let suggestion = document.querySelector('#suggestions')
+    
+    
+    let displayTime = 0 
+    input.addEventListener('input',e=>{
+      let text = input.value.trim()
+      let inputTime = Date.now()
+      getSuggestion(text,suggestions=>{
+        if(inputTime > displayTime){
+          suggestion.innerHTML = ''
+          displayTime = inputTime
+          for(let s of suggestions){
+            let sDiv = document.createElement('div')
+            sDiv.textContent = s
+            suggestion.append(sDiv)
+          }
+        }
+      })
+    })
+    function getSuggestion(text,fn){
+      let res = []
+      if(text === ''){
+        fn(res)
+        return
+      }
+      for(let i=0;i<10;i++){
+        res.push(text + i)
+      }
+      setTimeout(()=>{
+        fn(res)
+      },50 + Math.random() * 200)
+    }
+  </script>
+</body>
+</html>
