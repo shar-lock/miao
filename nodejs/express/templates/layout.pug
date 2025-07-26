@@ -1,0 +1,15 @@
+doctype html
+
+html
+  head 
+    meta(charset="utf8")
+  body
+    h1 BBS
+    if isLogin
+      div 你好，#{user.name}
+      <a href="/add-post">发帖</a>
+      <a href="/logout">登出</a>
+    else 
+      a(href="/login.html") 登录
+      a(href="/register.html") 注册
+    block content

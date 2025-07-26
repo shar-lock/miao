@@ -1,0 +1,12 @@
+extends layout.pug
+  
+
+block content 
+    <h1>发帖</h1>
+    <form action = "/add-post" method="post">
+      <div>标题：</div>
+      <input name="title">
+      <div>内容：</div>
+      <textarea name = "content"></textarea>
+      <button type = "submit">提交</button>
+    </form>

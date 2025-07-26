@@ -1,0 +1,7 @@
+extends layout.pug 
+block content 
+   p 您要找的帖子不存在,5秒后带您返回首页
+   script.
+     setTimeout(()=>{
+      location.href = '/'
+     },5000)

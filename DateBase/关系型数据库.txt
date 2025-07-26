@@ -1,0 +1,47 @@
+SQL 结构化查询语言
+sqlite 免费开源 无网络
+
+winpty  ./sqlite3.exe xxx.db 打开文件
+
+create table name ((columnsNames,datatype)...) 创建表
+
+insert into xxx value(args) 添加数据
+
+      SELECT 语句
+
+SELECT *全选/(columnsNames..) FROM files 选择列
+
+SELECT DISTINCT  *全选/(columnsNames..) FROM files 去重 选择多列时对每行的组合去重
+
+SELECT COUNT/SUM/AVG( *全选/(columnsNames..)) FROM files
+数据数量 总和 平均值
+
+SELECT * FROM xxx WHERE condition (AND OR NOT 且或非) 
+条件选择
+
+***************** ORDER BY 排序 
+ASC升序 DESC降序
+
+      
+      INSERT 语句
+INSERT INTO table_name(columnsNames..)
+VALUES(valNames...)
+增加列
+
+      NULL 空值
+
+      UPDATE
+UPDATE table SET columnsNames = valNames (where condition)
+改某一列的值 可加条件来更改某个特定的值
+
+      DELETE
+DELETE FROM table_name (where condition)
+删除所有行
+
+      LIKE 数据内容匹配某种模式
+      AS: columnsNames AS newNAME 改名
+      GROUP BY 通过xxx分组
+
+      CREATE DATABASE databse_name
+      DROP DATABASE databse_name 删除
+      BACKUP DATABASE databse_name 备份
